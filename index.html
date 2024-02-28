@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simulador de Precio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
     <h1>Simulador de Precio</h1>
-    
+
     <div>
         <label for="precio">Precio del producto:</label>
-        <input type="number" id="precio">
+        <input type="number" id="precio" value="0" />
     </div>
-    
+
     <div>
         <label for="impuestos">Impuestos (%):</label>
-        <input type="number" id="impuestos">
+        <input type="number" id="impuestos" value="0" />
     </div>
-    
+
     <div>
         <label for="descuento">Descuento (%):</label>
-        <input type="number" id="descuento">
+        <input type="number" id="descuento" value="0" />
     </div>
-    
+
     <button onclick="calcularPrecioFinal()">Calcular Precio Final</button>
-    
+    <input type="text" id="mostrartotal" />
+
     <div id="resultado"></div>
 
-    <script src="main.js"></script>
+    <script src="./main.js" defer></script>
 </body>
+
 </html>

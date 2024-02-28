@@ -1,44 +1,100 @@
 
-function obtenerPrecioProducto() {
-    return parseFloat(prompt('Ingrese el precio del producto:'));
-}
-
-function obtenerImpuestos() {
-    return parseFloat(prompt('Ingrese el porcentaje de impuestos (%):'));
-}
-
-function obtenerDescuento() {
-    return parseFloat(prompt('Ingrese el porcentaje de descuento (%):'));
-}
-
 function calcularPrecio(precio, impuestos, descuento) {
-    var impuestosAplicados = precio * (impuestos / 100);
-    var precioConImpuestos = precio + impuestosAplicados;
-    var descuentoAplicado = precioConImpuestos * (descuento / 100);
+    let impuestosAplicados = precio * (impuestos / 100);
+    let precioConImpuestos = precio + impuestosAplicados;
+    let descuentoAplicado = precioConImpuestos * (descuento / 100);
     return precioConImpuestos - descuentoAplicado;
 }
 
 function mostrarResultado(precioFinal) {
-    var resultadoHTML = 'El precio final del producto es: $' + precioFinal.toFixed(2);
-    alert(resultadoHTML);
+
+    let mostrarTotal = document.getElementById("mostrartotal");
+    mostrarTotal.value = precioFinal;
+
 }
+
+function calcularPrecio(precio, impuestos, descuento) {
+    let impuestosAplicados = precio * (impuestos / 100);
+    let precioConImpuestos = precio + impuestosAplicados;
+    let descuentoAplicado = precioConImpuestos * (descuento / 100);
+    return precioConImpuestos - descuentoAplicado;
+}
+
+function mostrarResultado(precioFinal) {
+    let mostrarTotal = document.getElementById("mostrartotal");
+    mostrarTotal.value = precioFinal;
+}
+
+// function calcularPrecioFinal() {
+//     let continuar = true;
+
+//     while (continuar) {
+//         let campoprecio = document.getElementById("precio");
+//         let valorprecio = parseFloat(campoprecio.value);
+//         let campoimpuestos = document.getElementById("impuestos");
+//         let valorimpuestos = parseFloat(campoimpuestos.value);
+//         let campodescuento = document.getElementById("descuento");
+//         let valordescuento = parseFloat(campodescuento.value);
+
+//         let precioProducto = valorprecio;
+//         let impuestos = valorimpuestos;
+//         let descuento = valordescuento;
+
+//         if (isNaN(precioProducto) || isNaN(impuestos) || isNaN(descuento)) {
+//             alert('Por favor, ingrese números válidos en todos los campos.');
+//             break; 
+//         }
+
+//         let precioFinal = calcularPrecio(precioProducto, impuestos, descuento);
+//         mostrarResultado(precioFinal);
+
+//         let respuesta = prompt('¿Desea realizar otro cálculo? escriba SI en caso afirmativo y si no desea continuar pulse en CANCELAR');
+//         if (respuesta === null || respuesta.toLowerCase() !== 'no') {
+//             continuar = false; 
+//         }
+//     }
 
 function calcularPrecioFinal() {
-    var continuar = true;
+    let continuar = true;
 
     while (continuar) {
-        var precioProducto = obtenerPrecioProducto();
-        var impuestos = obtenerImpuestos();
-        var descuento = obtenerDescuento();
+        let campoprecio = document.getElementById("precio");
+        let campoimpuestos = document.getElementById("impuestos");
+        let campodescuento = document.getElementById("descuento");
+        
 
-        if (isNaN(precioProducto) || isNaN(impuestos) || isNaN(descuento)) {
+        let valorprecio = parseFloat(campoprecio.value);
+        let valorimpuestos = parseFloat(campoimpuestos.value);
+        let valordescuento = parseFloat(campodescuento.value);
+
+        if (isNaN(valorprecio) || isNaN(valorimpuestos) || isNaN(valordescuento) || campoprecio.value === '' || campoimpuestos.value === '' || campodescuento.value === '') {
             alert('Por favor, ingrese números válidos en todos los campos.');
-            continue;
+            break;
         }
 
-        var precioFinal = calcularPrecio(precioProducto, impuestos, descuento);
+        let precioProducto = valorprecio;
+        let impuestos = valorimpuestos;
+        let descuento = valordescuento;
+
+        let precioFinal = calcularPrecio(precioProducto, impuestos, descuento);
         mostrarResultado(precioFinal);
 
-        continuar = confirm('¿Desea realizar otro cálculo?');
+        
+
+        let respuesta = confirm('¿Desea realizar otro cálculo?');
+        if (!respuesta) {
+            continuar = false;
+        } else {
+            
+            campoprecio.value = '';
+            campoimpuestos.value = '';
+            campodescuento.value = '';
+            mostrarTotal.value = '';
+        }
     }
 }
+
+
+
+
+
