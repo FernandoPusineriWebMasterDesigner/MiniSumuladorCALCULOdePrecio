@@ -13,12 +13,6 @@ function mostrarResultado(precioFinal) {
 
 }
 
-function calcularPrecio(precio, impuestos, descuento) {
-    let impuestosAplicados = precio * (impuestos / 100);
-    let precioConImpuestos = precio + impuestosAplicados;
-    let descuentoAplicado = precioConImpuestos * (descuento / 100);
-    return precioConImpuestos - descuentoAplicado;
-}
 
 function mostrarResultado(precioFinal) {
     let mostrarTotal = document.getElementById("mostrartotal");
